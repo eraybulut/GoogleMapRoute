@@ -1,4 +1,4 @@
-package com.eraybulut.mapexample.data.remote
+package com.eraybulut.mapexample.network
 
 import com.eraybulut.mapexample.model.response.DirectionResponse
 import retrofit2.Call
@@ -13,10 +13,8 @@ import retrofit2.http.Query
 interface ApiService {
 
     @GET("maps/api/directions/json")
-    fun getDirection(
+    suspend fun getMapRoute(
         @Query("origin") origin: String,
         @Query("destination") destination: String,
-        @Query("key") apiKey: String
-    ): Call<DirectionResponse>
-
+    ): DirectionResponse
 }

@@ -9,120 +9,127 @@ import com.google.gson.annotations.SerializedName
 
 data class DirectionResponse(
     @SerializedName("geocoded_waypoints")
-    var geocodedWaypoints: List<GeocodedWaypoint>?,
+    var geocodedWaypoints: List<GeocodedWaypoint>? = null,
     @SerializedName("routes")
-    var routes: List<Route>?,
+    var routes: List<Route>? = null,
     @SerializedName("status")
-    var status: String?
+    var status: String? = null
 )
 
 data class GeocodedWaypoint(
     @SerializedName("geocoder_status")
-    var geocoderStatus: String?,
+    var geocoderStatus: String? = null,
     @SerializedName("place_id")
-    var placeId: String?,
+    var placeId: String? = null,
     @SerializedName("types")
-    var types: List<String?>?
+    var types: List<String>? = null
 )
 
 data class Route(
-    @SerializedName("bounds") var bounds: Bounds?,
-    @SerializedName("copyrights") var copyrights: String?,
-    @SerializedName("legs") var legs: List<Leg>?,
-    @SerializedName("overview_polyline") var overviewPolyline: OverviewPolyline?,
-    @SerializedName("summary") var summary: String?,
+    @SerializedName("bounds")
+    var bounds: Bounds? = null,
+    @SerializedName("copyrights")
+    var copyrights: String? = null,
+    @SerializedName("legs")
+    var legs: List<Leg>? = null,
+    @SerializedName("overview_polyline")
+    var overviewPolyline: OverviewPolyline? = null,
+    @SerializedName("summary")
+    var summary: String? = null,
 )
 
 data class OverviewPolyline(
     @SerializedName("points")
-    var points: String?
+    var points: String? = null
 )
 
 data class Bounds(
     @SerializedName("northeast")
-    var northeast: Northeast?,
+    var northeast: Northeast? = null,
     @SerializedName("southwest")
-    var southwest: Southwest?
+    var southwest: Southwest? = null
 )
 
 data class Northeast(
     @SerializedName("lat")
-    var lat: Double?,
+    var lat: Double? = null,
     @SerializedName("lng")
-    var lng: Double?
+    var lng: Double? = null
 )
 
 
 data class Southwest(
-    @SerializedName("lat") var lat: Double?,
-    @SerializedName("lng") var lng: Double?
+    @SerializedName("lat")
+    var lat: Double? = null,
+    @SerializedName("lng")
+    var lng: Double? = null
 )
 
 data class Leg(
     @SerializedName("distance")
-    var distance: Distance?,
+    var distance: Distance? = null,
     @SerializedName("duration")
-    var duration: Duration?,
+    var duration: Duration? = null,
     @SerializedName("end_address")
-    var endAddress: String?,
+    var endAddress: String? = null,
     @SerializedName("end_location")
-    var endLocation: EndLocation?,
+    var endLocation: EndLocation? = null,
     @SerializedName("start_address")
-    var startAddress: String?,
+    var startAddress: String? = null,
     @SerializedName("start_location")
-    var startLocation: StartLocation?,
+    var startLocation: StartLocation? = null,
     @SerializedName("steps")
-    var steps: List<Step>?,
+    var steps: List<Step>? = null,
 )
 
 data class Distance(
     @SerializedName("text")
-    var text: String?,
+    var text: String? = null,
     @SerializedName("value")
-    var value: Int?
+    var value: Int? = null
 )
 
 data class Duration(
     @SerializedName("text")
-    var text: String?,
+    var text: String? = null,
     @SerializedName("value")
-    var value: Int?
+    var value: Int? = null
 )
 
 data class EndLocation(
     @SerializedName("lat")
-    var lat: Double?,
+    var lat: Double? = null,
     @SerializedName("lng")
-    var lng: Double?
+    var lng: Double? = null
 )
 
 data class StartLocation(
     @SerializedName("lat")
-    var lat: Double?,
+    var lat: Double? = null,
     @SerializedName("lng")
-    var lng: Double?
+    var lng: Double? = null
 )
 
 data class Step(
     @SerializedName("distance")
-    var distance: Distance?,
+    var distance: Distance? = null,
     @SerializedName("duration")
-    var duration: Duration?,
+    var duration: Duration? = null,
     @SerializedName("end_location")
-    var endLocation: EndLocation?,
+    var endLocation: EndLocation? = null,
     @SerializedName("html_instructions")
-    var htmlInstructions: String?,
+    var htmlInstructions: String? = null,
     @SerializedName("maneuver")
-    var maneuver: String?,
+    var maneuver: String? = null,
     @SerializedName("polyline")
-    var polyline: Polyline?,
+    var polyline: Polyline? = null,
     @SerializedName("start_location")
-    var startLocation: StartLocation?,
+    var startLocation: StartLocation? = null,
     @SerializedName("travel_mode")
-    var travelMode: String?
+    var travelMode: String? = null
 )
 
 data class Polyline(
     @SerializedName("points")
-    var points: String?
+    var points: String? = null
 )

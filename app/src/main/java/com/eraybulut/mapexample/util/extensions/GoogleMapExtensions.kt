@@ -2,12 +2,19 @@ package com.eraybulut.mapexample.util.extensions
 
 import android.content.res.Resources
 import android.graphics.Bitmap
+import androidx.annotation.ColorRes
+import androidx.core.content.ContextCompat
+import com.eraybulut.mapexample.R
+import com.eraybulut.mapexample.model.response.DirectionResponse
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.PolylineOptions
+import com.google.maps.android.PolyUtil
+import retrofit2.Response
 
 /**
  * Created by Eray BULUT on 13.08.2023
@@ -44,6 +51,15 @@ fun GoogleMap.setStartingZoomArea(startLatLng: LatLng, endLatLng: LatLng) {
 
 fun GoogleMap.changeCameraPosition(latLng: LatLng, zoom: Float = 15f) {
     moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom))
+}
+
+fun GoogleMap.drawPolyline(response: DirectionResponse,@ColorRes colorId : Int) {
+    val shape = response.routes?.get(0)?.overviewPolyline?.points
+    val polyline = PolylineOptions()
+        .addAll(PolyUtil.decode(shape))
+        .width(10f)
+        .color(colorId)
+    addPolyline(polyline)
 }
 
 fun GoogleMap.addMarker(position: LatLng, title: String, icon: Bitmap) {

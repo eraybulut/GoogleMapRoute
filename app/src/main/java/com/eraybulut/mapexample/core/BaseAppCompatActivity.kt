@@ -10,9 +10,11 @@ import androidx.viewbinding.ViewBinding
  * eraybulutlar@gmail.com
  */
 
-abstract class BaseAppCompatActivity<T : ViewBinding>(
+abstract class BaseAppCompatActivity<T : ViewBinding, out VM>(
     private val bindingFactory: (layoutInflater: android.view.LayoutInflater) -> T
 ) : AppCompatActivity() {
+
+    protected abstract val viewModel: VM
 
     lateinit var binding: T
 
