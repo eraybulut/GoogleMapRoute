@@ -2,6 +2,14 @@
 
 This Android application retrieves the user's current location and generates a route to a user-selected destination using Google Maps. The application also provides estimated distance and time information to the user.
 
+| Home | Search Address 
+| ----- | ----- |
+|<img src="media/1.png" width="270" height="600"/>|<img src="media/2.png" width="270" height="600"/>|
+
+| Place Detail|Draw Route|
+| ----- | ----- | 
+|<img src="media/3.png" width="270" height="600"/>|<img src="media/4.png" width="270" height="600"/>|
+
 ## Tech Stack & Open-source Libraries
 
 * **Minimum SDK Level**: 24
@@ -45,15 +53,6 @@ This Android application retrieves the user's current location and generates a r
   * **Fragment KTX**: Extensions for simplifying fragment usage.
   * **Lifecycle Extensions**: Extending lifecycle-aware components.
   * **SwipeRefreshLayout**: Implementing swipe-to-refresh functionality.
-
-
-| Home | Search Address 
-| ----- | ----- |
-|<img src="media/1.png" width="270" height="600"/>|<img src="media/2.png" width="270" height="600"/>|
-
-| Place Detail|Draw Route|
-| ----- | ----- | 
-|<img src="media/3.png" width="270" height="600"/>|<img src="media/4.png" width="270" height="600"/>|
 
 ## Features
 - Real-time location retrieval.
