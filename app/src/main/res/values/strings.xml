@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">MapExample</string>
+    <string name="google_maps_key">YOUR_API_KEY</string>
+    <string name="estimatedTime">Estimated Time</string>
+    <string name="estimatedDistance">Estimated Distance</string>
+    <string name="selectDestination">Choose Your Destination</string>
+    <string name="searchLocation">Search Location...</string>
+    <string name ="openMap">Open Map</string>
+    <string name="call">Call</string>
+    <string name="select_destination">Select Destination</string>
+</resources>
