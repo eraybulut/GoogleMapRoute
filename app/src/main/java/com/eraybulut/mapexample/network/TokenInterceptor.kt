@@ -9,7 +9,7 @@ import javax.inject.Inject
  * eraybulutlar@gmail.com
  */
 
-class RequestInterceptor @Inject constructor() :
+class TokenInterceptor @Inject constructor() :
     Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
 

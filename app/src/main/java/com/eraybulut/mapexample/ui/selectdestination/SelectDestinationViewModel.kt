@@ -1,9 +1,9 @@
-package com.eraybulut.mapexample.ui.home
+package com.eraybulut.mapexample.ui.selectdestination
 
 import android.util.Log
 import androidx.lifecycle.viewModelScope
 import com.eraybulut.mapexample.core.BaseViewModel
-import com.eraybulut.mapexample.data.model.response.DirectionResponse
+import com.eraybulut.mapexample.data.model.response.Prediction
 import com.eraybulut.mapexample.data.onError
 import com.eraybulut.mapexample.data.onSuccess
 import com.eraybulut.mapexample.network.MapService
@@ -14,30 +14,32 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 /**
- * Created by Eray BULUT on 15.08.2023
+ * Created by Eray BULUT on 16.08.2023
  * eraybulutlar@gmail.com
  */
 
 @HiltViewModel
-class HomeViewModel @Inject constructor(
+class SelectDestinationViewModel @Inject constructor(
     private val mapService: MapService
-) : BaseViewModel() {
+): BaseViewModel() {
 
-    private val _route = MutableStateFlow(DirectionResponse())
-    val route get() = _route.asStateFlow()
+    private val _address =
+        MutableStateFlow<List<Prediction>>(emptyList())
+    val address get() = _address.asStateFlow()
 
-    fun getMapRoute(origin: String, destination: String) {
+
+    fun searchLocation(query : String){
         viewModelScope.launch {
-            showLoading()
             safeApiCall {
-                mapService.getMapRoute(origin, destination)
+                mapService.getAutoComplete(query)
             }.onSuccess {
-                _route.value = it
-                hideLoading()
+               if (it.predictions != null){
+                   _address.value = it.predictions
+               }
             }.onError {
-                Log.e("HomeViewModel", "drawRoute: $it")
-                hideLoading()
+                Log.e("Select Destination Error",it)
             }
         }
     }
+
 }

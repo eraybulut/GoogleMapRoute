@@ -1,7 +1,7 @@
 package com.eraybulut.mapexample.di
 
-import com.eraybulut.mapexample.network.ApiService
-import com.eraybulut.mapexample.network.RequestInterceptor
+import com.eraybulut.mapexample.network.MapService
+import com.eraybulut.mapexample.network.TokenInterceptor
 import com.eraybulut.mapexample.util.Constants
 import dagger.Module
 import dagger.Provides
@@ -35,11 +35,11 @@ object NetworkModule {
     @Provides
     fun provideHttpClient(
         httpLoggingInterceptor: HttpLoggingInterceptor,
-        requestInterceptor: RequestInterceptor
+        tokenInterceptor: TokenInterceptor
     ): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(httpLoggingInterceptor)
-            .addInterceptor(requestInterceptor)
+            .addInterceptor(tokenInterceptor)
             .readTimeout(Constants.READ_TIMEOUT, TimeUnit.SECONDS)
             .connectTimeout(Constants.CONNECT_TIMEOUT, TimeUnit.SECONDS)
             .writeTimeout(Constants.WRITE_TIMEOUT, TimeUnit.SECONDS)
@@ -67,7 +67,7 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideApiClient(retrofit: Retrofit): ApiService {
-        return retrofit.create(ApiService::class.java)
+    fun provideApiClient(retrofit: Retrofit): MapService {
+        return retrofit.create(MapService::class.java)
     }
 }

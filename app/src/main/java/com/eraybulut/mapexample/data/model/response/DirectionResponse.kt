@@ -1,4 +1,4 @@
-package com.eraybulut.mapexample.model.response
+package com.eraybulut.mapexample.data.model.response
 
 import com.google.gson.annotations.SerializedName
 

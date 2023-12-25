@@ -1,9 +1,10 @@
-package com.eraybulut.mapexample.ui.home
+package com.eraybulut.mapexample.ui.placedetail
 
 import android.util.Log
 import androidx.lifecycle.viewModelScope
 import com.eraybulut.mapexample.core.BaseViewModel
-import com.eraybulut.mapexample.data.model.response.DirectionResponse
+import com.eraybulut.mapexample.data.PrefDataSource
+import com.eraybulut.mapexample.data.model.response.PlaceDetailsResponse
 import com.eraybulut.mapexample.data.onError
 import com.eraybulut.mapexample.data.onSuccess
 import com.eraybulut.mapexample.network.MapService
@@ -14,30 +15,35 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 /**
- * Created by Eray BULUT on 15.08.2023
+ * Created by Eray BULUT on 23.12.2023
  * eraybulutlar@gmail.com
  */
-
 @HiltViewModel
-class HomeViewModel @Inject constructor(
-    private val mapService: MapService
+class PlaceDetailViewModel @Inject constructor(
+    private val mapService: MapService,
+    private val prefDataSource: PrefDataSource
 ) : BaseViewModel() {
 
-    private val _route = MutableStateFlow(DirectionResponse())
-    val route get() = _route.asStateFlow()
+    private val _placeDetail =
+        MutableStateFlow(PlaceDetailsResponse())
+    val placeDetail get() = _placeDetail.asStateFlow()
 
-    fun getMapRoute(origin: String, destination: String) {
+    fun getPlaceDetail(placeId: String) {
         viewModelScope.launch {
             showLoading()
             safeApiCall {
-                mapService.getMapRoute(origin, destination)
+                mapService.getPlaceDetails(placeId)
             }.onSuccess {
-                _route.value = it
                 hideLoading()
+                if (it.status == "OK") {
+                    _placeDetail.value = it
+                }
             }.onError {
-                Log.e("HomeViewModel", "drawRoute: $it")
                 hideLoading()
+                Log.e("KEY-detail",it)
             }
         }
     }
+
+
 }

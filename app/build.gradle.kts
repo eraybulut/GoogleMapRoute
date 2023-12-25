@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.kapt3.base.Kapt.kapt
-
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -9,7 +7,7 @@ plugins {
 
 android {
     namespace = "com.eraybulut.mapexample"
-    compileSdk = 33
+    compileSdk = 34
 
     viewBinding {
         enable = true
@@ -18,7 +16,7 @@ android {
     defaultConfig {
         applicationId = "com.eraybulut.mapexample"
         minSdk = 24
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -44,18 +42,20 @@ android {
 }
 
 dependencies {
-    implementation("androidx.core:core-ktx:1.10.1")
+    implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.9.0")
+    implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
 
+    //Security Crypto
+    implementation ("androidx.security:security-crypto:1.0.0")
 
-
-    implementation ("androidx.fragment:fragment-ktx:1.6.1")
+    // Coil
+    implementation("io.coil-kt:coil:2.4.0")
     
     // Dagger - Hilt
-    implementation("com.google.dagger:hilt-android:2.45")
-    kapt("com.google.dagger:hilt-android-compiler:2.45")
+    implementation("com.google.dagger:hilt-android:2.47")
+    kapt("com.google.dagger:hilt-android-compiler:2.47")
 
     //SmartLocation
     implementation ("io.nlopez.smartlocation:library:3.3.3")
@@ -65,18 +65,23 @@ dependencies {
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
 
     //Okhttp
-    implementation ("com.squareup.okhttp3:logging-interceptor:4.7.2")
+    implementation ("com.squareup.okhttp3:logging-interceptor:4.11.0")
 
     //Google Places
-    implementation ("com.google.android.libraries.places:places:3.2.0")
+    implementation ("com.google.android.libraries.places:places:3.3.0")
 
     //Google Maps
-    implementation ("com.google.android.gms:play-services-maps:18.1.0")
-    implementation ("com.google.maps.android:android-maps-utils:2.2.3")
     implementation ("com.google.maps.android:maps-ktx:3.1.0")
-    implementation ("com.google.android.gms:play-services-maps:18.1.0")
+    implementation ("com.google.android.gms:play-services-maps:18.2.0")
     implementation ("com.google.android.gms:play-services-location:21.0.1")
+    implementation ("com.google.maps.android:android-maps-utils:2.2.3")
     implementation ("com.google.maps.android:maps-utils-ktx:3.1.0")
+
+    implementation ("androidx.fragment:fragment-ktx:1.6.2")
+    implementation ("androidx.lifecycle:lifecycle-extensions:2.2.0")
+
+    //Swipe Refresh Layout
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 
     //Test
     testImplementation("junit:junit:4.13.2")
